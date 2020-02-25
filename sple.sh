@@ -182,13 +182,11 @@ echo "   server_name " | sudo tee -a $configfile
    done
 echo ";" | sudo tee -a $configfile 
 echo "" | sudo tee -a $configfile 
-echo "   ssl on;" | sudo tee -a $configfile 
-echo "" | sudo tee -a $configfile 
 echo "   # letsencrypt certificates" | sudo tee -a $configfile 
 echo "   ssl_certificate      /etc/letsencrypt/live/${APPDOMAINS[0]}/fullchain.pem;" | sudo tee -a $configfile 
 echo "   ssl_certificate_key  /etc/letsencrypt/live/${APPDOMAINS[0]}/privkey.pem;" | sudo tee -a $configfile 
 echo "" | sudo tee -a $configfile 
-echo "    #SSL Optimization" | sudo tee -a $configfile 
+echo "    # SSL Optimization" | sudo tee -a $configfile 
 echo "    ssl_session_timeout 1d;" | sudo tee -a $configfile 
 echo "    ssl_session_cache shared:SSL:20m;" | sudo tee -a $configfile 
 echo "    ssl_session_tickets off;" | sudo tee -a $configfile 
