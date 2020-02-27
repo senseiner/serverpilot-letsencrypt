@@ -174,17 +174,17 @@ echo ""
 echo "Creating configuration file for $appname in the $conffolder"
 sudo touch $configfile
 echo "server {" | sudo tee $configfile 
-echo "   listen 443 ssl http2;" | sudo tee -a $configfile 
-echo "   listen [::]:443 ssl http2;" | sudo tee -a $configfile 
-echo "   server_name " | sudo tee -a $configfile 
-   for domain in $domains; do
-      echo -n $domain" " | sudo tee -a $configfile
-   done
+echo "    listen 443 ssl http2;" | sudo tee -a $configfile 
+echo "    listen [::]:443 ssl http2;" | sudo tee -a $configfile 
+echo "    server_name " | sudo tee -a $configfile 
+          for domain in $domains; do
+             echo -n $domain" " | sudo tee -a $configfile
+          done
 echo ";" | sudo tee -a $configfile 
 echo "" | sudo tee -a $configfile 
-echo "   # letsencrypt certificates" | sudo tee -a $configfile 
-echo "   ssl_certificate      /etc/letsencrypt/live/${APPDOMAINS[0]}/fullchain.pem;" | sudo tee -a $configfile 
-echo "   ssl_certificate_key  /etc/letsencrypt/live/${APPDOMAINS[0]}/privkey.pem;" | sudo tee -a $configfile 
+echo "    # letsencrypt certificates" | sudo tee -a $configfile 
+echo "    ssl_certificate      /etc/letsencrypt/live/${APPDOMAINS[0]}/fullchain.pem;" | sudo tee -a $configfile 
+echo "    ssl_certificate_key  /etc/letsencrypt/live/${APPDOMAINS[0]}/privkey.pem;" | sudo tee -a $configfile 
 echo "" | sudo tee -a $configfile 
 echo "    # SSL Optimization" | sudo tee -a $configfile 
 echo "    ssl_session_timeout 1d;" | sudo tee -a $configfile 
@@ -195,7 +195,7 @@ echo "    # modern configuration" | sudo tee -a $configfile
 echo "    ssl_protocols TLSv1.2 TLSv1.3;" | sudo tee -a $configfile 
 echo "    ssl_prefer_server_ciphers on;" | sudo tee -a $configfile 
 echo "" | sudo tee -a $configfile 
-echo "    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;" | sudo tee -a $configfile 
+echo "    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384';" | sudo tee -a $configfile 
 echo "" | sudo tee -a $configfile 
 echo "    # OCSP stapling" | sudo tee -a $configfile 
 echo "    ssl_stapling on;" | sudo tee -a $configfile 
